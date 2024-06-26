@@ -12,12 +12,14 @@
   onMount(async () => {
     Plaid = window.Plaid;
     plaid_login = await createLogin();
+    console.log("Plaid login object:", plaid_login)
   });
 
   const getTransactions = async () => {
     console.log('getTransactions');
     const res = await fetch('/api/plaid/transactions');
     const data = await res.json();
+    console.log("Transaction data:", data)
     transactions = data.transactions;
   };
 
@@ -28,6 +30,9 @@
   };
 
   const exchangePublicToken = async (public_token: string, metadata: any) => {
+    console.log("Trying to fetch access-token for plaid")
+    console.log("public token:", public_token)
+    console.log("metadata:", metadata)
     await fetch('/api/plaid/access-token', {
       method: 'POST',
       headers: {
@@ -41,6 +46,7 @@
     const token = await getLinkToken();
     const config = { token: token, onSuccess: exchangePublicToken };
     const plaidClient = Plaid.create(config);
+    console.log("plaid client:", plaidClient)
     return plaidClient;
   };
 

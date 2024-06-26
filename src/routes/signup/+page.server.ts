@@ -11,6 +11,9 @@ export const load = async () => {
   };
 };
 
+/**
+ * When the user clicks the button to signup, 
+ */
 export const actions: Actions = {
   default: async (event) => {
     const formData = await event.request.formData();

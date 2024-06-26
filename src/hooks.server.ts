@@ -112,6 +112,8 @@ export const handle: Handle = sequence(
     '/api/receipt',
     '/api/plaid/access-token',
     '/api/plaid/link-token',
-    '/api/plaid/transaction'
+    '/api/plaid/transaction',
+    '/signup/verify-mobile',
+    '/signup/mobile'
   ])
 );
